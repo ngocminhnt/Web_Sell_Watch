@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 5, 2020 5:22:24 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="watch.entity.Product" table="Product" schema="dbo" catalog="ManageWatch" optimistic-lock="version">
+        <id name="productId" type="string">
+            <column name="ProductId" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="categories" class="watch.entity.Categories" lazy="false" fetch="select">
+            <column name="CatId" />
+        </many-to-one>
+        <many-to-one name="producers" class="watch.entity.Producers" lazy="false" fetch="select">
+            <column name="ProducersId" />
+        </many-to-one>
+        <property name="productName" type="string">
+            <column name="ProductName" />
+        </property>
+        <property name="price" type="java.lang.Double">
+            <column name="Price" precision="53" scale="0" />
+        </property>
+        <property name="title" type="string">
+            <column name="Title" />
+        </property>
+        <property name="descriptions" type="string">
+            <column name="Descriptions" />
+        </property>
+        <property name="created" type="string">
+            <column name="Created" />
+        </property>
+        <property name="discount" type="java.lang.Integer">
+            <column name="Discount" />
+        </property>
+        <property name="quantity" type="java.lang.Integer">
+            <column name="Quantity" />
+        </property>
+        <property name="imageLink" type="string">
+            <column name="ImageLink" />
+        </property>
+        <property name="productStatus" type="java.lang.Boolean">
+            <column name="ProductStatus" />
+        </property>
+        <set name="imageses" table="Images" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="ProductId" />
+            </key>
+            <one-to-many class="watch.entity.Images" />
+        </set>
+        <set name="orderDetails" table="OrderDetail" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="ProductId" not-null="true" />
+            </key>
+            <one-to-many class="watch.entity.OrderDetail" />
+        </set>
+    </class>
+</hibernate-mapping>

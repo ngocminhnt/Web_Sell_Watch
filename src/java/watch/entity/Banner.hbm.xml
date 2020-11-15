@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 5, 2020 5:22:24 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="watch.entity.Banner" table="Banner" schema="dbo" catalog="ManageWatch" optimistic-lock="version">
+        <id name="bannerId" type="string">
+            <column name="BannerId" />
+            <generator class="assigned" />
+        </id>
+        <property name="bannerName" type="string">
+            <column name="BannerName" />
+        </property>
+        <property name="imageLink" type="string">
+            <column name="ImageLink" />
+        </property>
+        <property name="bannerStatus" type="java.lang.Boolean">
+            <column name="BannerStatus" />
+        </property>
+    </class>
+</hibernate-mapping>

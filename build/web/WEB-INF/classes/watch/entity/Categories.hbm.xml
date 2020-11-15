@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 5, 2020 5:22:24 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="watch.entity.Categories" table="Categories" schema="dbo" catalog="ManageWatch" optimistic-lock="version">
+        <id name="catId" type="string">
+            <column name="CatId" />
+            <generator class="assigned" />
+        </id>
+        <property name="catName" type="string">
+            <column name="CatName" />
+        </property>
+        <property name="catStatus" type="java.lang.Boolean">
+            <column name="CatStatus" />
+        </property>
+        <property name="descriptons" type="string">
+            <column name="Descriptons" />
+        </property>
+        <set name="products" table="Product" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="CatId" />
+            </key>
+            <one-to-many class="watch.entity.Product" />
+        </set>
+    </class>
+</hibernate-mapping>

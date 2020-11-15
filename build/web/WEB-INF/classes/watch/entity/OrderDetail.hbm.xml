@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 5, 2020 5:22:24 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="watch.entity.OrderDetail" table="OrderDetail" schema="dbo" catalog="ManageWatch" optimistic-lock="version">
+        <composite-id name="id" class="watch.entity.OrderDetailId">
+            <key-property name="orderId" type="int">
+                <column name="OrderId" />
+            </key-property>
+            <key-property name="productId" type="string">
+                <column name="ProductId" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="orders" class="watch.entity.Orders" update="false" insert="false" fetch="select">
+            <column name="OrderId" not-null="true" />
+        </many-to-one>
+        <many-to-one name="product" class="watch.entity.Product" update="false" insert="false" fetch="select">
+            <column name="ProductId" not-null="true" />
+        </many-to-one>
+        <property name="quantity" type="java.lang.Integer">
+            <column name="Quantity" />
+        </property>
+    </class>
+</hibernate-mapping>

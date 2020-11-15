@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 5, 2020 5:22:24 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="watch.entity.WebUser" table="WebUser" schema="dbo" catalog="ManageWatch" optimistic-lock="version">
+        <id name="userId" type="int">
+            <column name="UserId" />
+            <generator class="identity" />
+        </id>
+        <property name="mail" type="string">
+            <column name="Mail" />
+        </property>
+        <property name="phone" type="string">
+            <column name="Phone" length="12" />
+        </property>
+        <property name="userName" type="string">
+            <column name="UserName" />
+        </property>
+        <property name="passwords" type="string">
+            <column name="Passwords" />
+        </property>
+        <property name="addresss" type="string">
+            <column name="Addresss" />
+        </property>
+        <property name="userStatus" type="java.lang.Boolean">
+            <column name="UserStatus" />
+        </property>
+        <property name="birthDay" type="string">
+            <column name="BirthDay" />
+        </property>
+        <set name="orderses" table="Orders" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="UserId" />
+            </key>
+            <one-to-many class="watch.entity.Orders" />
+        </set>
+    </class>
+</hibernate-mapping>
